@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOUMCO", "SOUMCO\SOUMCO.csproj", "{2B4014B1-0F57-4411-9E22-E3C6183CA8EF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LIBSOUMCO", "LIBSOUMCO\LIBSOUMCO.vbproj", "{2682D866-773E-4410-8F8B-3644A31E4D74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B4014B1-0F57-4411-9E22-E3C6183CA8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4014B1-0F57-4411-9E22-E3C6183CA8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B4014B1-0F57-4411-9E22-E3C6183CA8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B4014B1-0F57-4411-9E22-E3C6183CA8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2682D866-773E-4410-8F8B-3644A31E4D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2682D866-773E-4410-8F8B-3644A31E4D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2682D866-773E-4410-8F8B-3644A31E4D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2682D866-773E-4410-8F8B-3644A31E4D74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
