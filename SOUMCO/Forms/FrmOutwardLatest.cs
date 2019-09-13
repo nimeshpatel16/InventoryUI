@@ -168,6 +168,95 @@ namespace SOUMCO.Forms
 
         #endregion
 
+        public async void ProcFillForm(object Id)
+        {
+            OutwardInfo ObjinwardInfo = new OutwardInfo();
+            var client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(Common.Common.APIURL_OUTWARD_GETBY_ID + "?Id=" + Id.ToString());
+            var fileJsonString = await response.Content.ReadAsStringAsync();
+            // DataTable dtList = (DataTable)JsonConvert.DeserializeObject(fileJsonString, (typeof(DataTable)));
+            ObjinwardInfo = JsonConvert.DeserializeObject<OutwardInfo>(fileJsonString);
+            if (ObjinwardInfo.outwardId > 0)
+            {
+                lblId.Text = ObjinwardInfo.outwardId.ToString();
+                txtBillNo.Text = ObjinwardInfo.invoiceNo;
+                dtpInvoiceDate.Value = ObjinwardInfo.invoiceDate;
+                txtSupplierName.Text = ObjinwardInfo.partyName;
+                txtRemarks.Text = ObjinwardInfo.description;
+
+            }
+
+            //foreach (var objDetail in ObjinwardInfo.lstOutwardDetail)
+            //{
+            //    productDataTable.Rows.Add(objDetail.productTypeId, objDetail.productTypeName, objDetail.productSizeId, objDetail.productSizeName, objDetail.productId, objDetail.productName, objDetail.width, objDetail.length, objDetail.quantity, objDetail.inwardDetailId, "Edit", "Delete");
+            //    //dataGridView1.Columns.Clear();
+            //    //dataGridView1.Columns.Add()
+
+            //}
+            dgInward.DataSource = ObjinwardInfo.lstOutwardDetail;
+            //DataTable DTFill = new DataTable();
+            //ClsComm comm = new ClsComm();
+            //DTFill = comm.FillTable("Select * from InwardEntry where InwardId=" + Id);
+            //if (DTFill.Rows.Count > 0)
+            //{
+            //    lblId.Text = Id.ToString();
+            //    StrSupplierId = DTFill.Rows[0]["SupplierId"].ToString();
+            //    txtBillNo.Text = DTFill.Rows[0]["BillNo"].ToString();
+            // //   txtInvoiceNo.Text = DTFill.Rows[0]["InvoiceNo"].ToString();
+            //   // cmbCompany.Text = DTFill.Rows[0]["CompanyName"].ToString();
+            //  //  dtpEntryDate.Value = Convert.ToDateTime(DTFill.Rows[0]["EntryDate"]);
+            //    dtpInvoiceDate.Value = Convert.ToDateTime(DTFill.Rows[0]["InvoiceDate"]);
+            //    //cmbCompany.SelectedText=DTFill.Rows[0]["CompanyName"].ToString();
+            //    //txtOtherAmt.Text = DTFill.Rows[0]["OtherAmount"].ToString();
+            //    //txtTotalAmt.Text = DTFill.Rows[0]["TotalBillAmount"].ToString();
+            //    txtRemarks.Text = DTFill.Rows[0]["Remarks"].ToString();
+            //}
+
+            //DataTable DT = new DataTable();
+            //DT = comm.FillTable("Select * from InwardDetailEntry where InwardId=" + Id);
+            //int i = 0;
+            //for (i = 0; i <= DT.Rows.Count - 1; i++)
+            //{
+
+            //    dgInward.Rows.Add();
+            //   // comm.GridBindCombo(dgItemName, false, "ItemId", "ItemName", "Select ItemId,ItemName from Item where CategoryId=" + DT.Rows[i]["CategoryId"] + " order by ItemName");
+            //    dgInward["dgDetailId", i].Value = DT.Rows[i]["InwardDetailId"].ToString();
+            //    dgInward["dgCategory", i].Value = DT.Rows[i]["CategoryId"];
+            //    dgInward["dgItemName", i].Value = DT.Rows[i]["ItemId"];
+            //    dgInward["dgDescription", i].Value = DT.Rows[i]["Description"].ToString();
+            //    dgInward["dgDensity", i].Value = DT.Rows[i]["DensityValue"].ToString();
+            //    dgInward["dgQty", i].Value = DT.Rows[i]["Qty"].ToString();
+            //    dgInward["dgRate", i].Value = DT.Rows[i]["Rate"].ToString();
+            //    dgInward["dgTotalAmount", i].Value =Convert.ToString(Convert.ToDouble(dgInward["dgQty", i].Value) * Convert.ToDouble(dgInward["dgRate", i].Value));
+            //    dgInward["dgBottomRate", i].Value = DT.Rows[i]["BottomRate"].ToString();
+            //    dgInward["dgKgs", i].Value = DT.Rows[i]["ActualKG"].ToString();
+            //    dgInward["dgDiameter", i].Value = DT.Rows[i]["Diameter"].ToString();
+            //    dgInward["dgThickness", i].Value = DT.Rows[i]["Thickness"].ToString();
+            //    dgInward["dgWidth", i].Value = DT.Rows[i]["Width"].ToString();
+            //    dgInward["dgLength", i].Value = DT.Rows[i]["Length"].ToString();
+            //    dgInward["dgOD", i].Value = DT.Rows[i]["OD"].ToString();
+            //    dgInward["dgID", i].Value = DT.Rows[i]["ID"].ToString();
+            //    dgInward["dgSize", i].Value = DT.Rows[i]["Size"].ToString();
+            //    dgInward["dgMeter", i].Value = DT.Rows[i]["Meter"].ToString();
+            //    dgInward["dgFormulatedKgs", i].Value = DT.Rows[i]["FormulatedKG"].ToString();
+
+            //}
+            //if (ClsComm.tUserRightToEdit != true)
+            //{
+            //    btnOk.Enabled = false;
+            //    btnSaveAndNew.Enabled = false;
+            //    btnCancel.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnOk.Enabled = true;
+            //    btnSaveAndNew.Enabled = true;
+            //    btnCancel.Enabled = true;
+            //}
+
+        }
+
+
         private void ProcOpen()
         {
             ClsComm Comm = new ClsComm();

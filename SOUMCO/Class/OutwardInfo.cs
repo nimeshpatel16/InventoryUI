@@ -23,6 +23,11 @@ namespace SOUMCO.Class
         public int outwardDetailId { get; set; }
         public int outwardId { get; set; }
         public int productId { get; set; }
+        public string productName { get; set; }
+        public int productTypeId { get; set; }
+        public string productTypeName { get; set; }
+        public int productSizeId { get; set; }
+        public string productSizeName { get; set; }
         public decimal length { get; set; }
         public decimal heigth { get; set; }
         public decimal width { get; set; }

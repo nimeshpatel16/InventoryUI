@@ -828,55 +828,88 @@ namespace SOUMCO.Forms
 
                 else if (ClickName.ToUpper() == "OutwardEntry".ToString().ToUpper())
                 {
+
                     ClsComm comm = new ClsComm();
                     dt = new DataTable();
                     if (e.ColumnIndex == 0)
                     {
-                        FrmOutwardLatest frmOutward = new FrmOutwardLatest();
-                      //  frmOutward.ProcFillForm(dgList.Rows[e.RowIndex].Cells[2].Value);
-                        //frmOutward.ShowDialog();
-                        frmOutward.MdiParent = this.MdiParent;
-                        frmOutward.BringToFront();
-                        frmOutward.WindowState = FormWindowState.Maximized;
-                        frmOutward.Dock = DockStyle.Fill;
-                        frmOutward.Show();
+                        FrmOutwardLatest objCategory = new FrmOutwardLatest();
+                        objCategory.ProcFillForm(dgList.Rows[e.RowIndex].Cells[2].Value);
+                        //objCategory.ShowDialog();
+                        objCategory.MdiParent = this.MdiParent;
+                        objCategory.BringToFront();
+                        objCategory.WindowState = FormWindowState.Maximized;
+                        objCategory.Dock = DockStyle.Fill;
+                        objCategory.Show();
+                        OutwardInfo objProductInfo = new OutwardInfo();
+                        var client = new HttpClient();
 
-
-                        dt = comm.FillTable("SELECT OutwardEntry.OutwardId, Supplier.SupplierName as CustomerName, OutwardEntry.InvoiceNo, format(OutwardEntry.InvoiceDate,\"dd/mm/yyyy\") as InvoiceDate " +
-                                    " FROM OutwardEntry INNER JOIN Supplier ON OutwardEntry.CustomerId = Supplier.SupplierId " +
-                                    " WHERE (((Supplier.Type)='Customer')) AND OutwardEntry.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + "" +
-                                    " ORDER BY OutwardEntry.InvoiceDate Desc;");
-
-                        //dt = comm.FillTable("Select O.OutwardId,V.VehicleNo,O.DocNo,format(O.DocDate,\"dd/mm/yyyy\") as DocDate,O.InchargeName,O.IssueTo from OutwardEntry O inner join Vehicle V on V.VehicleId=O.VehicleId where O.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                        if (dt.Rows.Count > 0)
+                        HttpResponseMessage response = await client.GetAsync(Common.Common.APIURL_OUTWARD_GETBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        var fileJsonString = await response.Content.ReadAsStringAsync();
+                        // DataTable dtList = (DataTable)JsonConvert.DeserializeObject(fileJsonString, (typeof(DataTable)));
+                        objProductInfo = JsonConvert.DeserializeObject<OutwardInfo>(fileJsonString);
+                        if (objProductInfo.outwardId > 0)
                         {
-                            dgList[3, e.RowIndex].Value = dt.Rows[0]["CustomerName"].ToString();
-                            dgList[4, e.RowIndex].Value = dt.Rows[0]["InvoiceNo"].ToString();
-                            dgList[5, e.RowIndex].Value = dt.Rows[0]["InvoiceDate"].ToString();
-                            //dgList[6, e.RowIndex].Value = dt.Rows[0]["CategoryName"].ToString();
-                            //dgList[7, e.RowIndex].Value = dt.Rows[0]["ItemName"].ToString();
+                            dgList[4, e.RowIndex].Value = objProductInfo.invoiceNo;
+                            dgList[5, e.RowIndex].Value = objProductInfo.invoiceDate;
+                            dgList[6, e.RowIndex].Value = objProductInfo.partyName;
+                            dgList[7, e.RowIndex].Value = objProductInfo.description;
                         }
 
+                        dgList.Refresh();
 
-                    }
-                    else if (e.ColumnIndex == 1)
-                    {
-                        DialogResult MsgDialog;
 
-                        MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (MsgDialog == DialogResult.Yes)
-                        {
-                            comm.DeleteData("OutwardEntry", "OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                            comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='O' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                            dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                            dgList.Refresh();
+
+
+                        //ClsComm comm = new ClsComm();
+                        //dt = new DataTable();
+                        //if (e.ColumnIndex == 0)
+                        //{
+                        //    FrmOutwardLatest frmOutward = new FrmOutwardLatest();
+                        //  //  frmOutward.ProcFillForm(dgList.Rows[e.RowIndex].Cells[2].Value);
+                        //    //frmOutward.ShowDialog();
+                        //    frmOutward.MdiParent = this.MdiParent;
+                        //    frmOutward.BringToFront();
+                        //    frmOutward.WindowState = FormWindowState.Maximized;
+                        //    frmOutward.Dock = DockStyle.Fill;
+                        //    frmOutward.Show();
+
+
+                        //    dt = comm.FillTable("SELECT OutwardEntry.OutwardId, Supplier.SupplierName as CustomerName, OutwardEntry.InvoiceNo, format(OutwardEntry.InvoiceDate,\"dd/mm/yyyy\") as InvoiceDate " +
+                        //                " FROM OutwardEntry INNER JOIN Supplier ON OutwardEntry.CustomerId = Supplier.SupplierId " +
+                        //                " WHERE (((Supplier.Type)='Customer')) AND OutwardEntry.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + "" +
+                        //                " ORDER BY OutwardEntry.InvoiceDate Desc;");
+
+                        //    //dt = comm.FillTable("Select O.OutwardId,V.VehicleNo,O.DocNo,format(O.DocDate,\"dd/mm/yyyy\") as DocDate,O.InchargeName,O.IssueTo from OutwardEntry O inner join Vehicle V on V.VehicleId=O.VehicleId where O.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
+                        //    if (dt.Rows.Count > 0)
+                        //    {
+                        //        dgList[3, e.RowIndex].Value = dt.Rows[0]["CustomerName"].ToString();
+                        //        dgList[4, e.RowIndex].Value = dt.Rows[0]["InvoiceNo"].ToString();
+                        //        dgList[5, e.RowIndex].Value = dt.Rows[0]["InvoiceDate"].ToString();
+                        //        //dgList[6, e.RowIndex].Value = dt.Rows[0]["CategoryName"].ToString();
+                        //        //dgList[7, e.RowIndex].Value = dt.Rows[0]["ItemName"].ToString();
+                        //    }
+
+
+                        //}
+                        //else if (e.ColumnIndex == 1)
+                        //{
+                        //    DialogResult MsgDialog;
+
+                        //    MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        //    if (MsgDialog == DialogResult.Yes)
+                        //    {
+                        //        comm.DeleteData("OutwardEntry", "OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
+                        //        comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='O' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
+                        //        dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
+                        //        dgList.Refresh();
+                        //    }
                         }
                     }
-                }
-                #endregion
+                    #endregion
 
-                #region user Info
-                else if (ClickName.ToUpper() == "User".ToString().ToUpper())
+                    #region user Info
+                    else if (ClickName.ToUpper() == "User".ToString().ToUpper())
                 {
                     ClsComm comm = new ClsComm();
                     dt = new DataTable();
