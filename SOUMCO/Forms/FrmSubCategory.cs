@@ -175,8 +175,8 @@ namespace SOUMCO.Forms
         private async System.Threading.Tasks.Task SaveDataAPIAsync()
         {
             ProductSizeInfo productSizeInfo = new ProductSizeInfo();
-            productSizeInfo.productSizeName = txtSubCategoryName.Text;
-            productSizeInfo.productSizedescription = txtRemarks.Text;
+            productSizeInfo.productSizeName = txtSubCategoryName.Text.ToUpper();
+            productSizeInfo.productSizedescription = txtRemarks.Text.ToUpper();
             productSizeInfo.productTypeId = (int) cmbProductType.SelectedValue;
             productSizeInfo.productSizeId = lblId.Text == "" ? 0 : Convert.ToInt32(lblId.Text);
 
@@ -198,11 +198,13 @@ namespace SOUMCO.Forms
 
                 if (response.IsSuccessStatusCode)
                 {
-                    int result = await response.Content.ReadAsAsync<int>();
-                    if (result == -1)
-                        MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
-                    else
-                        MessageBox.Show("An error has occurred");
+                    // int result = await response.Content.ReadAsAsync<int>();
+                    // if (result == -1)
+                    MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
+                }
+                else
+                { 
+                    MessageBox.Show("An error has occurred");
                 }
             }
 

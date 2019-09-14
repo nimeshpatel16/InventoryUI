@@ -92,6 +92,10 @@ namespace SOUMCO.Forms
                     {
                         MessageBox.Show("An error has occurred");
                     }
+                    dgInward.Columns[1].Visible = false;
+                    dgInward.Columns[2].Visible = false;
+                    dgInward.Columns[4].Visible = false;
+                    dgInward.Columns[5].Visible = false;
                 }
 
 
@@ -112,9 +116,10 @@ namespace SOUMCO.Forms
             {
                 OutwardInfo outwardInfo = new OutwardInfo();
                 outwardInfo.invoiceDate = Convert.ToDateTime(dtpInvoiceDate.Value);
-                outwardInfo.invoiceNo = txtBillNo.Text;
-                outwardInfo.partyName = txtSupplierName.Text;
-                outwardInfo.description = txtRemarks.Text;
+                outwardInfo.invoiceNo = txtBillNo.Text.ToUpper();
+                outwardInfo.partyName = txtSupplierName.Text.ToUpper();
+                outwardInfo.description = txtRemarks.Text.ToUpper();
+                outwardInfo.outwardId = lblId.Text == "" ? 0 : Convert.ToInt32(lblId.Text);
                 List<OutwardDetail> listOutwardDetail = new List<OutwardDetail>();
                 foreach (DataGridViewRow item in dgInward.Rows)
                 {
@@ -125,7 +130,7 @@ namespace SOUMCO.Forms
                         outwardDetail.productLedgerId = Convert.ToInt32(item.Cells[1].Value.ToString());
                         outwardDetail.length = Convert.ToDecimal(txtLength.Text);  //Convert.ToDecimal(item.Cells[5].Value.ToString());
                         outwardDetail.width = Convert.ToDecimal(txtWidth.Text);  //Convert.ToDecimal(item.Cells[6].Value.ToString());
-                        outwardDetail.quantity = Convert.ToInt32(item.Cells[7].Value.ToString());
+                        outwardDetail.quantity = Convert.ToInt32(item.Cells[8].Value.ToString());
                         outwardDetail.heigth = 0;
 
                         listOutwardDetail.Add(outwardDetail);

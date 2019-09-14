@@ -89,11 +89,11 @@ namespace SOUMCO.Forms
         private async System.Threading.Tasks.Task SaveDataAPIAsync()
         {
             ProductInfo productInfo = new ProductInfo();
-            productInfo.productName = txtName.Text;
-            productInfo.description = txtRemarks.Text;
+            productInfo.productName = txtName.Text.ToUpper();
+            productInfo.description = txtRemarks.Text.ToUpper();
             productInfo.productTypeId =(int) cmbProductType.SelectedValue;
             productInfo.productSizeId = (int)cmbProductSize.SelectedValue;
-            productInfo.productId = Convert.ToInt32(lblId.Text);
+            productInfo.productId = lblId.Text== "" ? 0 : Convert.ToInt32(lblId.Text);
 
             using (var client = new HttpClient())
             {
@@ -112,11 +112,13 @@ namespace SOUMCO.Forms
                 }
                 if (response.IsSuccessStatusCode)
                 {
-                    int result = await response.Content.ReadAsAsync<int>();
-                    if (result == -1)
-                        MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
-                    else
-                        MessageBox.Show("An error has occurred");
+                    //int result = await response.Content.ReadAsAsync<int>();
+                    //if (result == -1)
+                    MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
+                }
+                else
+                { 
+                    MessageBox.Show("An error has occurred");
                 }
             }
 
@@ -134,16 +136,16 @@ namespace SOUMCO.Forms
                 txtName.Focus();
                 return false;
             }
-            if (lblId.Text == string.Empty)
-            {
-                itemName = comm.GetValue("ItemName", "Item", "ItemName='" + txtName.Text + "'");
-                if (!string.IsNullOrEmpty(itemName))
-                {
-                    MessageBox.Show("Duplicate item name found", "SOUMCO");
-                    txtName.Focus();
-                    return false;
-                }
-            }
+            //if (lblId.Text == string.Empty)
+            //{
+            //    itemName = comm.GetValue("ItemName", "Item", "ItemName='" + txtName.Text + "'");
+            //    if (!string.IsNullOrEmpty(itemName))
+            //    {
+            //        MessageBox.Show("Duplicate item name found", "SOUMCO");
+            //        txtName.Focus();
+            //        return false;
+            //    }
+            //}
             return true;
         }
 

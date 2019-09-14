@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
@@ -74,7 +74,7 @@
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(118, 33);
-            this.btnAdd.TabIndex = 11;
+            this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Get Data";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -98,7 +98,7 @@
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(118, 30);
-            this.txtQuantity.TabIndex = 10;
+            this.txtQuantity.TabIndex = 11;
             // 
             // label9
             // 
@@ -165,7 +165,7 @@
             this.cmbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(323, 30);
-            this.cmbProduct.TabIndex = 7;
+            this.cmbProduct.TabIndex = 8;
             this.cmbProduct.Tag = "1";
             // 
             // cmbProductSize
@@ -178,7 +178,7 @@
             this.cmbProductSize.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductSize.Name = "cmbProductSize";
             this.cmbProductSize.Size = new System.Drawing.Size(323, 30);
-            this.cmbProductSize.TabIndex = 6;
+            this.cmbProductSize.TabIndex = 7;
             this.cmbProductSize.Tag = "1";
             this.cmbProductSize.SelectionChangeCommitted += new System.EventHandler(this.cmbProductSize_SelectionChangeCommitted);
             // 
@@ -190,7 +190,7 @@
             this.txtWidth.Margin = new System.Windows.Forms.Padding(4);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(118, 30);
-            this.txtWidth.TabIndex = 8;
+            this.txtWidth.TabIndex = 9;
             // 
             // panel1
             // 
@@ -214,8 +214,8 @@
             this.dgInward.Location = new System.Drawing.Point(0, 0);
             this.dgInward.Margin = new System.Windows.Forms.Padding(4);
             this.dgInward.Name = "dgInward";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInward.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInward.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgInward.Size = new System.Drawing.Size(1407, 194);
             this.dgInward.TabIndex = 12;
             // 
@@ -257,7 +257,7 @@
             this.txtLength.Margin = new System.Windows.Forms.Padding(4);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(112, 30);
-            this.txtLength.TabIndex = 9;
+            this.txtLength.TabIndex = 10;
             // 
             // btnCancel
             // 
@@ -280,7 +280,7 @@
             this.cmbProductType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductType.Name = "cmbProductType";
             this.cmbProductType.Size = new System.Drawing.Size(323, 30);
-            this.cmbProductType.TabIndex = 5;
+            this.cmbProductType.TabIndex = 6;
             this.cmbProductType.Tag = "1";
             this.cmbProductType.SelectionChangeCommitted += new System.EventHandler(this.cmbProductType_SelectionChangeCommitted);
             // 
@@ -429,7 +429,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 147);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1407, 239);
-            this.panel2.TabIndex = 1019;
+            this.panel2.TabIndex = 5;
             // 
             // FrmOutwardLatest
             // 

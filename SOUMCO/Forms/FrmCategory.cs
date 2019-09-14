@@ -26,11 +26,11 @@ namespace SOUMCO.Forms
             InitializeComponent();
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private async void btnOk_Click(object sender, EventArgs e)
         {
             //if (IsValidate())
             {
-                SaveDataAPIAsync();
+                await SaveDataAPIAsync();
                 this.Dispose();
             }
         }
@@ -38,8 +38,8 @@ namespace SOUMCO.Forms
         private async System.Threading.Tasks.Task SaveDataAPIAsync()
         {
             ProductTypeInfo productTypeInfo = new ProductTypeInfo();
-            productTypeInfo.productTypeName = txtCategoryName.Text;
-            productTypeInfo.description = txtRemarks.Text;
+            productTypeInfo.productTypeName = txtCategoryName.Text.ToUpper();
+            productTypeInfo.description = txtRemarks.Text.ToUpper();
             productTypeInfo.productTypeId = lblId.Text == "" ? 0 : Convert.ToInt32(lblId.Text);
            
             using (var client = new HttpClient())
@@ -59,11 +59,13 @@ namespace SOUMCO.Forms
 
                 if (response.IsSuccessStatusCode)
                 {
-                    int result = await response.Content.ReadAsAsync<int>();
-                    if (result == -1)
-                        MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
-                    else
-                        Console.WriteLine("An error has occurred");
+                    //int result = await response.Content.ReadAsAsync<int>();
+                    //if (result == -1)
+                    MessageBox.Show("Record Save Successfully", "Inventory", MessageBoxButtons.OK);
+                }
+                else
+                { 
+                    Console.WriteLine("An error has occurred");
                 }
             }
 
@@ -179,6 +181,16 @@ namespace SOUMCO.Forms
         private void GBCustomerInformation_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCategoryName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtRemarks_TextChanged(object sender, EventArgs e)
+        {
+           // txtRemarks.Text = txtRemarks.Text.ToUpper();
         }
     }
 }

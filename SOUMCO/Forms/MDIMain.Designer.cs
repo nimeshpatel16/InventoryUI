@@ -119,34 +119,37 @@ namespace SOUMCO.Forms
             this.Density_toolStripMenuItem.Name = "Density_toolStripMenuItem";
             this.Density_toolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.Density_toolStripMenuItem.Text = "Density Info";
+            this.Density_toolStripMenuItem.Visible = false;
             this.Density_toolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Category_toolStripMenuItem
             // 
             this.Category_toolStripMenuItem.Name = "Category_toolStripMenuItem";
-            this.Category_toolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.Category_toolStripMenuItem.Text = "Category info";
+            this.Category_toolStripMenuItem.ShowShortcutKeys = false;
+            this.Category_toolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.Category_toolStripMenuItem.Text = "Product Type Info";
             this.Category_toolStripMenuItem.Click += new System.EventHandler(this.Category_toolStripMenuItem_Click);
             // 
             // subCategoryToolStripMenuItem
             // 
             this.subCategoryToolStripMenuItem.Name = "subCategoryToolStripMenuItem";
-            this.subCategoryToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.subCategoryToolStripMenuItem.Text = "Sub Category info";
+            this.subCategoryToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.subCategoryToolStripMenuItem.Text = "Product Size info";
             this.subCategoryToolStripMenuItem.Click += new System.EventHandler(this.subCategoryToolStripMenuItem_Click);
             // 
             // supplierInfoToolStripMenuItem
             // 
             this.supplierInfoToolStripMenuItem.Name = "supplierInfoToolStripMenuItem";
-            this.supplierInfoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.supplierInfoToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.supplierInfoToolStripMenuItem.Text = "Supplier Info";
+            this.supplierInfoToolStripMenuItem.Visible = false;
             this.supplierInfoToolStripMenuItem.Click += new System.EventHandler(this.supplierInfoToolStripMenuItem_Click);
             // 
             // itemInfoToolStripMenuItem
             // 
             this.itemInfoToolStripMenuItem.Name = "itemInfoToolStripMenuItem";
-            this.itemInfoToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.itemInfoToolStripMenuItem.Text = "Item Info";
+            this.itemInfoToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.itemInfoToolStripMenuItem.Text = "Product Info";
             this.itemInfoToolStripMenuItem.Click += new System.EventHandler(this.itemInfoToolStripMenuItem_Click);
             // 
             // vehicleInfoToolStripMenuItem
@@ -202,7 +205,7 @@ namespace SOUMCO.Forms
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(178, 26);
             this.toolStripMenuItem2.Text = "Company";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
             // 
@@ -211,6 +214,7 @@ namespace SOUMCO.Forms
             this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
             this.userToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.userToolStripMenuItem1.Text = "User";
+            this.userToolStripMenuItem1.Visible = false;
             this.userToolStripMenuItem1.Click += new System.EventHandler(this.userToolStripMenuItem1_Click);
             // 
             // DensityList_toolStripMenuItem
@@ -218,19 +222,20 @@ namespace SOUMCO.Forms
             this.DensityList_toolStripMenuItem.Name = "DensityList_toolStripMenuItem";
             this.DensityList_toolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.DensityList_toolStripMenuItem.Text = "Density";
+            this.DensityList_toolStripMenuItem.Visible = false;
             this.DensityList_toolStripMenuItem.Click += new System.EventHandler(this.DensityList_toolStripMenuItem_Click);
             // 
             // CategoryList_toolStripMenuItem
             // 
             this.CategoryList_toolStripMenuItem.Name = "CategoryList_toolStripMenuItem";
-            this.CategoryList_toolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.CategoryList_toolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.CategoryList_toolStripMenuItem.Text = "Product Type";
             this.CategoryList_toolStripMenuItem.Click += new System.EventHandler(this.CategoryList_toolStripMenuItem_Click);
             // 
             // subCategoryToolStripMenuItem1
             // 
             this.subCategoryToolStripMenuItem1.Name = "subCategoryToolStripMenuItem1";
-            this.subCategoryToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.subCategoryToolStripMenuItem1.Size = new System.Drawing.Size(178, 26);
             this.subCategoryToolStripMenuItem1.Text = "Product Size";
             this.subCategoryToolStripMenuItem1.Click += new System.EventHandler(this.subCategoryToolStripMenuItem1_Click);
             // 
@@ -239,6 +244,7 @@ namespace SOUMCO.Forms
             this.CustomertoolStripMenuItem1.Name = "CustomertoolStripMenuItem1";
             this.CustomertoolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.CustomertoolStripMenuItem1.Text = "Customer";
+            this.CustomertoolStripMenuItem1.Visible = false;
             this.CustomertoolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // supplierListToolStripMenuItem
@@ -246,19 +252,20 @@ namespace SOUMCO.Forms
             this.supplierListToolStripMenuItem.Name = "supplierListToolStripMenuItem";
             this.supplierListToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.supplierListToolStripMenuItem.Text = "Supplier";
+            this.supplierListToolStripMenuItem.Visible = false;
             this.supplierListToolStripMenuItem.Click += new System.EventHandler(this.supplierListToolStripMenuItem_Click);
             // 
             // itemListToolStripMenuItem
             // 
             this.itemListToolStripMenuItem.Name = "itemListToolStripMenuItem";
-            this.itemListToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.itemListToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.itemListToolStripMenuItem.Text = "Product";
             this.itemListToolStripMenuItem.Click += new System.EventHandler(this.itemListToolStripMenuItem_Click);
             // 
             // vehicleToolStripMenuItem
             // 
             this.vehicleToolStripMenuItem.Name = "vehicleToolStripMenuItem";
-            this.vehicleToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.vehicleToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.vehicleToolStripMenuItem.Text = "Vehicle";
             this.vehicleToolStripMenuItem.Visible = false;
             this.vehicleToolStripMenuItem.Click += new System.EventHandler(this.vehicleToolStripMenuItem_Click);
@@ -266,14 +273,14 @@ namespace SOUMCO.Forms
             // inwardEntryToolStripMenuItem1
             // 
             this.inwardEntryToolStripMenuItem1.Name = "inwardEntryToolStripMenuItem1";
-            this.inwardEntryToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.inwardEntryToolStripMenuItem1.Size = new System.Drawing.Size(178, 26);
             this.inwardEntryToolStripMenuItem1.Text = "Inward Entry";
             this.inwardEntryToolStripMenuItem1.Click += new System.EventHandler(this.inwardEntryToolStripMenuItem1_Click);
             // 
             // outwardEntryToolStripMenuItem1
             // 
             this.outwardEntryToolStripMenuItem1.Name = "outwardEntryToolStripMenuItem1";
-            this.outwardEntryToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.outwardEntryToolStripMenuItem1.Size = new System.Drawing.Size(178, 26);
             this.outwardEntryToolStripMenuItem1.Text = "Outward Entry";
             this.outwardEntryToolStripMenuItem1.Click += new System.EventHandler(this.outwardEntryToolStripMenuItem1_Click);
             // 

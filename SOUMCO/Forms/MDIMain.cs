@@ -334,7 +334,7 @@ namespace SOUMCO.Forms
         private void Category_toolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategory category = new FrmCategory();
-            category.Text = "Category Info";
+            category.Text = "Product Type Info";
             category.MdiParent = this;
             category.Show();
         }
@@ -419,7 +419,7 @@ namespace SOUMCO.Forms
         private void subCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmSubCategory category = new FrmSubCategory();
-            category.Text = "Sub Category Info";
+            category.Text = "Product Size Info";
             category.MdiParent = this;
             category.Show();
         }

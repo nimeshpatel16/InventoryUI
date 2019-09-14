@@ -120,7 +120,7 @@
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(324, 29);
-            this.txtRemarks.TabIndex = 7;
+            this.txtRemarks.TabIndex = 6;
             // 
             // label3
             // 
@@ -140,7 +140,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(324, 24);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 5;
             // 
             // label2
             // 

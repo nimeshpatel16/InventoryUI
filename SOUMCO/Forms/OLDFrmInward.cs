@@ -53,10 +53,10 @@ namespace SOUMCO.Forms
             {
                 InwardInfo inwardInfo = new InwardInfo();
                 inwardInfo.billDate = Convert.ToDateTime(dtpInvoiceDate.Value);
-                inwardInfo.billNo = txtBillNo.Text;
-                inwardInfo.supplierName = txtSupplierName.Text;
-                inwardInfo.description = txtRemarks.Text;
-                inwardInfo.inwardId= Convert.ToInt32(lblId.Text);
+                inwardInfo.billNo = txtBillNo.Text.ToUpper();
+                inwardInfo.supplierName = txtSupplierName.Text.ToUpper();
+                inwardInfo.description = txtRemarks.Text.ToUpper();
+                inwardInfo.inwardId= lblId.Text==""? 0: Convert.ToInt32(lblId.Text);
                 List<InwardDetailForSP> listInwardDetail = new List<InwardDetailForSP>();
                 foreach (DataGridViewRow item in dgInward.Rows)
                 {
@@ -644,17 +644,18 @@ namespace SOUMCO.Forms
             int i = 0;
             if (lblRowIndex.Text != string.Empty && btnAdd.Text=="Edit")
             {
-                dgInward[i, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductType.SelectedValue;
-                dgInward[i=i++, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductType.GetItemText(this.cmbProductType.SelectedItem);
-                dgInward[i=i++, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductSize.SelectedValue;
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductSize.GetItemText(this.cmbProductSize.SelectedItem);
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProduct.SelectedValue;
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProduct.GetItemText(this.cmbProduct.SelectedItem);
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = txtWidth.Text;
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = txtLength.Text;
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = txtQuantity.Text;
-                dgInward[i = i++, Convert.ToInt32(lblRowIndex.Text)].Value = lblDetailId.Text;
+                dgInward[0, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductType.SelectedValue;
+                dgInward[1, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductType.GetItemText(this.cmbProductType.SelectedItem);
+                dgInward[2, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductSize.SelectedValue;
+                dgInward[3, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProductSize.GetItemText(this.cmbProductSize.SelectedItem);
+                dgInward[4, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProduct.SelectedValue;
+                dgInward[5, Convert.ToInt32(lblRowIndex.Text)].Value = cmbProduct.GetItemText(this.cmbProduct.SelectedItem);
+                dgInward[6, Convert.ToInt32(lblRowIndex.Text)].Value = txtWidth.Text;
+                dgInward[7, Convert.ToInt32(lblRowIndex.Text)].Value = txtLength.Text;
+                dgInward[8, Convert.ToInt32(lblRowIndex.Text)].Value = txtQuantity.Text;
+                dgInward[9, Convert.ToInt32(lblRowIndex.Text)].Value = lblDetailId.Text;
                 btnAdd.Text = "Add";
+                dgInward.RefreshEdit();
             }
             else
             {
@@ -714,22 +715,36 @@ namespace SOUMCO.Forms
 
         private void dgInward_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(this.dgInward[e.ColumnIndex, e.RowIndex].Value.ToString()=="Edit")
+            try
             {
-                cmbProductType.SelectedValue = Convert.ToInt32(dgInward[0, e.RowIndex].Value);
-                cmbProductType_SelectionChangeCommitted(null, null);
-                cmbProductSize.SelectedValue = Convert.ToInt32(dgInward[2, e.RowIndex].Value);
-                cmbProductSize_SelectionChangeCommitted(null, null);
-                
-                cmbProduct.SelectedValue = Convert.ToInt32(dgInward[4, e.RowIndex].Value);
-                txtLength.Text = dgInward[6, e.RowIndex].Value.ToString();
-                txtWidth.Text = dgInward[7, e.RowIndex].Value.ToString();
-                txtQuantity.Text = dgInward[8, e.RowIndex].Value.ToString();
-                lblDetailId.Text = dgInward[9, e.RowIndex].Value.ToString();
-                lblRowIndex.Text = e.RowIndex.ToString();
-                btnAdd.Text = "Edit";
-            }
+                if (this.dgInward[e.ColumnIndex, e.RowIndex].Value.ToString() == "Edit")
+                {
+                    cmbProductType.SelectedValue = Convert.ToInt32(dgInward[0, e.RowIndex].Value);
+                    cmbProductType_SelectionChangeCommitted(null, null);
+                    cmbProductSize.SelectedIndex = -1;
+                    cmbProductSize.SelectedValue = Convert.ToInt32(dgInward[2, e.RowIndex].Value);
+                    cmbProductSize_SelectionChangeCommitted(null, null);
 
+                    cmbProduct.SelectedValue = Convert.ToInt32(dgInward[4, e.RowIndex].Value);
+                    if (cmbProduct.SelectedValue == null)
+                    {
+                        cmbProductSize_SelectionChangeCommitted(null, null);
+                        cmbProduct.SelectedValue = Convert.ToInt32(dgInward[4, e.RowIndex].Value);
+                    }
+                    txtWidth.Text = dgInward[6, e.RowIndex].Value.ToString();
+                    txtLength.Text = dgInward[7, e.RowIndex].Value.ToString();
+                    txtQuantity.Text = dgInward[8, e.RowIndex].Value.ToString();
+                    lblDetailId.Text = dgInward[9, e.RowIndex].Value.ToString();
+                    lblRowIndex.Text = e.RowIndex.ToString();
+                    btnAdd.Text = "Edit";
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            } 
             //inwardDetail.ProductId = Convert.ToInt32(item.Cells[4].Value.ToString());
             //inwardDetail.InwardWidth = Convert.ToDecimal(item.Cells[6].Value.ToString());
             //inwardDetail.InwardLength = Convert.ToDecimal(item.Cells[7].Value.ToString());

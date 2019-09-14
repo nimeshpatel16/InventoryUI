@@ -33,13 +33,13 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.GBCustomerInformation = new System.Windows.Forms.GroupBox();
+            this.cmbProductType = new System.Windows.Forms.ComboBox();
             this.txtSubCategoryName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbProductType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.GBCustomerInformation.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +108,14 @@
             this.GBCustomerInformation.TabIndex = 0;
             this.GBCustomerInformation.TabStop = false;
             // 
+            // cmbProductType
+            // 
+            this.cmbProductType.FormattingEnabled = true;
+            this.cmbProductType.Location = new System.Drawing.Point(168, 65);
+            this.cmbProductType.Name = "cmbProductType";
+            this.cmbProductType.Size = new System.Drawing.Size(293, 26);
+            this.cmbProductType.TabIndex = 1;
+            // 
             // txtSubCategoryName
             // 
             this.txtSubCategoryName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -116,6 +124,16 @@
             this.txtSubCategoryName.Name = "txtSubCategoryName";
             this.txtSubCategoryName.Size = new System.Drawing.Size(293, 26);
             this.txtSubCategoryName.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 65);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 18);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Product Type";
             // 
             // label5
             // 
@@ -156,24 +174,6 @@
             this.lblId.Size = new System.Drawing.Size(0, 18);
             this.lblId.TabIndex = 27;
             this.lblId.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 65);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 18);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Product Type";
-            // 
-            // cmbProductType
-            // 
-            this.cmbProductType.FormattingEnabled = true;
-            this.cmbProductType.Location = new System.Drawing.Point(168, 65);
-            this.cmbProductType.Name = "cmbProductType";
-            this.cmbProductType.Size = new System.Drawing.Size(293, 26);
-            this.cmbProductType.TabIndex = 33;
             // 
             // FrmSubCategory
             // 

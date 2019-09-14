@@ -49,6 +49,8 @@ namespace SOUMCO.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblDetailId = new System.Windows.Forms.Label();
+            this.lblRowIndex = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@ namespace SOUMCO.Forms
             this.cmbProductSize = new System.Windows.Forms.ComboBox();
             this.cmbProductType = new System.Windows.Forms.ComboBox();
             this.txtWidth = new System.Windows.Forms.TextBox();
-            this.lblDetailId = new System.Windows.Forms.Label();
-            this.lblRowIndex = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInward)).BeginInit();
@@ -271,7 +271,7 @@ namespace SOUMCO.Forms
             this.txtLength.Margin = new System.Windows.Forms.Padding(4);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(112, 30);
-            this.txtLength.TabIndex = 9;
+            this.txtLength.TabIndex = 10;
             // 
             // panel1
             // 
@@ -289,7 +289,7 @@ namespace SOUMCO.Forms
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 33);
-            this.btnAdd.TabIndex = 11;
+            this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -316,7 +316,29 @@ namespace SOUMCO.Forms
             this.panel2.Location = new System.Drawing.Point(0, 147);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1283, 239);
-            this.panel2.TabIndex = 1015;
+            this.panel2.TabIndex = 5;
+            // 
+            // lblDetailId
+            // 
+            this.lblDetailId.AutoSize = true;
+            this.lblDetailId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailId.Location = new System.Drawing.Point(602, 109);
+            this.lblDetailId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailId.Name = "lblDetailId";
+            this.lblDetailId.Size = new System.Drawing.Size(0, 25);
+            this.lblDetailId.TabIndex = 1019;
+            this.lblDetailId.Visible = false;
+            // 
+            // lblRowIndex
+            // 
+            this.lblRowIndex.AutoSize = true;
+            this.lblRowIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRowIndex.Location = new System.Drawing.Point(846, 86);
+            this.lblRowIndex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRowIndex.Name = "lblRowIndex";
+            this.lblRowIndex.Size = new System.Drawing.Size(0, 25);
+            this.lblRowIndex.TabIndex = 1019;
+            this.lblRowIndex.Visible = false;
             // 
             // label10
             // 
@@ -337,7 +359,7 @@ namespace SOUMCO.Forms
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(118, 30);
-            this.txtQuantity.TabIndex = 10;
+            this.txtQuantity.TabIndex = 11;
             // 
             // label9
             // 
@@ -404,7 +426,7 @@ namespace SOUMCO.Forms
             this.cmbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(323, 30);
-            this.cmbProduct.TabIndex = 7;
+            this.cmbProduct.TabIndex = 8;
             this.cmbProduct.Tag = "1";
             // 
             // cmbProductSize
@@ -417,7 +439,7 @@ namespace SOUMCO.Forms
             this.cmbProductSize.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductSize.Name = "cmbProductSize";
             this.cmbProductSize.Size = new System.Drawing.Size(323, 30);
-            this.cmbProductSize.TabIndex = 6;
+            this.cmbProductSize.TabIndex = 7;
             this.cmbProductSize.Tag = "1";
             this.cmbProductSize.SelectedIndexChanged += new System.EventHandler(this.cmbProductSize_SelectedIndexChanged);
             this.cmbProductSize.SelectionChangeCommitted += new System.EventHandler(this.cmbProductSize_SelectionChangeCommitted);
@@ -431,7 +453,7 @@ namespace SOUMCO.Forms
             this.cmbProductType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductType.Name = "cmbProductType";
             this.cmbProductType.Size = new System.Drawing.Size(323, 30);
-            this.cmbProductType.TabIndex = 5;
+            this.cmbProductType.TabIndex = 6;
             this.cmbProductType.Tag = "1";
             this.cmbProductType.SelectionChangeCommitted += new System.EventHandler(this.cmbProductType_SelectionChangeCommitted);
             // 
@@ -443,29 +465,7 @@ namespace SOUMCO.Forms
             this.txtWidth.Margin = new System.Windows.Forms.Padding(4);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(118, 30);
-            this.txtWidth.TabIndex = 8;
-            // 
-            // lblDetailId
-            // 
-            this.lblDetailId.AutoSize = true;
-            this.lblDetailId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailId.Location = new System.Drawing.Point(602, 109);
-            this.lblDetailId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDetailId.Name = "lblDetailId";
-            this.lblDetailId.Size = new System.Drawing.Size(0, 25);
-            this.lblDetailId.TabIndex = 1019;
-            this.lblDetailId.Visible = false;
-            // 
-            // lblRowIndex
-            // 
-            this.lblRowIndex.AutoSize = true;
-            this.lblRowIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRowIndex.Location = new System.Drawing.Point(846, 86);
-            this.lblRowIndex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRowIndex.Name = "lblRowIndex";
-            this.lblRowIndex.Size = new System.Drawing.Size(0, 25);
-            this.lblRowIndex.TabIndex = 1019;
-            this.lblRowIndex.Visible = false;
+            this.txtWidth.TabIndex = 9;
             // 
             // OLDFrmInward
             // 

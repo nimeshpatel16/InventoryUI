@@ -113,6 +113,7 @@ namespace SOUMCO.Forms
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(293, 26);
             this.txtCategoryName.TabIndex = 0;
+            this.txtCategoryName.TextChanged += new System.EventHandler(this.txtCategoryName_TextChanged);
             // 
             // label5
             // 
@@ -133,6 +134,7 @@ namespace SOUMCO.Forms
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(293, 81);
             this.txtRemarks.TabIndex = 2;
+            this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
             // label3
             // 

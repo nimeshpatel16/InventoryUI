@@ -48,6 +48,7 @@ namespace SOUMCO.Class
     {
         public int ledgerId { get; set; }
         public int productId { get; set; }
+        public string productName { get; set; }
         public int inwardId { get; set; }
         public int inwardDetailId { get; set; }
         public decimal length { get; set; }
