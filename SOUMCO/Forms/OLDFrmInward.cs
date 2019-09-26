@@ -16,7 +16,7 @@ namespace SOUMCO.Forms
 {
     public partial class OLDFrmInward : Form
     {
-        string StrSupplierId;
+        string ProductCategory;
         double dTotalAmt = 0;
         private DataTable productDataTable;
 
@@ -545,11 +545,7 @@ namespace SOUMCO.Forms
 
         private void FrmInward_Activated(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(StrSupplierId))
-            {
-                //CmbSupplier.SelectedValue = StrSupplierId;
-                
-            }
+          
         }
 
         private void dgInward_RowLeave(object sender, DataGridViewCellEventArgs e)
@@ -620,9 +616,26 @@ namespace SOUMCO.Forms
 
         private async void cmbProductType_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            txtWidth.Enabled = true;
+            txtLength.Enabled = true;
+            txtWidth.Text = "0.00";
+            txtLength.Text = "0.00";
             if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
             {
-               await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+                ProductCategory = ((ProductTypeInfo)cmbProductType.SelectedItem).productTypeName.ToUpper();
+                if(ProductCategory.Contains("ROD") || ProductCategory.Contains("BUSH"))
+                {
+                    txtWidth.Text = "0.00";
+                    txtWidth.Enabled = false;
+                }
+                else if(ProductCategory.Contains("ARTICLE"))
+                {
+                    txtWidth.Text = "0.00";
+                    txtLength.Text = "0.00";
+                    txtWidth.Enabled = false;
+                    txtLength.Enabled = false;
+                }
+                await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
             }
         }
 

@@ -15,7 +15,8 @@ namespace SOUMCO.Class
         public string partyName { get; set; }
         public string description { get; set; }
         public List<OutwardDetail> lstOutwardDetail = new List<OutwardDetail>();
-        
+        public List<InwardOfOutwardSheet> lstInwardOfOutwardSheet = new List<InwardOfOutwardSheet>();
+
     }
 
     public class OutwardDetail
@@ -33,8 +34,16 @@ namespace SOUMCO.Class
         public decimal width { get; set; }
         public int quantity { get; set; }
         public int productLedgerId { get; set; }
+
     }
 
+    public class InwardOfOutwardSheet
+    {
+        public int productId { get; set; }
+        public decimal length { get; set; }
+        public decimal width { get; set; }
+        public int quantity { get; set; }
+    }
 
     public class OutwardGetAvailableQuantity
     {
@@ -42,6 +51,7 @@ namespace SOUMCO.Class
         public decimal length { get; set; }
         public decimal width { get; set; }
         public int quantity { get; set; }
+        public string type { get; set; }
     }
 
     public class OutwardResultAvailableQuantity

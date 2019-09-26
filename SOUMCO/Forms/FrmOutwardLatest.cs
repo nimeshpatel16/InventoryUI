@@ -18,6 +18,7 @@ namespace SOUMCO.Forms
     public partial class FrmOutwardLatest : Form
     {
         DataTable productDataTable;
+        DataTable InwardproductDataTable;
 
         public FrmOutwardLatest()
         {
@@ -76,6 +77,7 @@ namespace SOUMCO.Forms
             {
                 OutwardGetAvailableQuantity outwardGetAvailableQuantity = new OutwardGetAvailableQuantity();
                 outwardGetAvailableQuantity.productId = Convert.ToInt32(cmbProduct.SelectedValue);
+                outwardGetAvailableQuantity.type = ((ProductTypeInfo)cmbProductType.SelectedItem).productTypeName.ToUpper();
                 outwardGetAvailableQuantity.length = Convert.ToDecimal(txtLength.Text);
                 outwardGetAvailableQuantity.width =Convert.ToDecimal(txtWidth.Text);
                 outwardGetAvailableQuantity.quantity = Convert.ToInt32(txtQuantity.Text);
@@ -137,6 +139,21 @@ namespace SOUMCO.Forms
                     }
                 }
                 outwardInfo.lstOutwardDetail = listOutwardDetail;
+                List<InwardOfOutwardSheet> lstInwardOfOutwardSheet = new List<InwardOfOutwardSheet>();
+                foreach (DataGridViewRow item in dgInwardForSheet.Rows)
+                {
+                    if (item.Cells[0].Value != null)
+                    {
+                        InwardOfOutwardSheet inwardOfOutwardSheet = new InwardOfOutwardSheet();
+                        inwardOfOutwardSheet.productId = Convert.ToInt32(cmbProduct.SelectedValue);
+                        inwardOfOutwardSheet.length = Convert.ToDecimal(item.Cells[0].Value.ToString());
+                        inwardOfOutwardSheet.width = Convert.ToDecimal(item.Cells[1].Value.ToString());
+                        inwardOfOutwardSheet.quantity = Convert.ToInt32(item.Cells[2].Value.ToString());
+                        lstInwardOfOutwardSheet.Add(inwardOfOutwardSheet);
+                    }
+                }
+
+                outwardInfo.lstInwardOfOutwardSheet = lstInwardOfOutwardSheet;
 
                 using (var client = new HttpClient())
                 {
@@ -267,7 +284,8 @@ namespace SOUMCO.Forms
             ClsComm Comm = new ClsComm();
             GetProductType();
             dgInward.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            lblInwardEntry.Visible = false;
+            pnlInward.Visible = false;
             productDataTable = new DataTable();
             productDataTable.Columns.Add("ProductTypeId");
             productDataTable.Columns.Add("Product Type");
@@ -280,10 +298,19 @@ namespace SOUMCO.Forms
             productDataTable.Columns.Add("Quantity");
             productDataTable.Columns.Add("Edit");
             productDataTable.Columns.Add("Delete");
+
+            InwardproductDataTable = new DataTable();
+            InwardproductDataTable.Columns.Add("ProductId");
+            InwardproductDataTable.Columns.Add("Width");
+            InwardproductDataTable.Columns.Add("Length");
+            InwardproductDataTable.Columns.Add("Quantity");
+
         }
 
         private bool IsValidate()
         {
+            bool isCheckedSelected = false;
+
             if (txtBillNo.Text == "")
             {
                 MessageBox.Show("Enter Invoice No ", "SOUMCO");
@@ -296,14 +323,56 @@ namespace SOUMCO.Forms
                 MessageBox.Show("Cannot save data without transaction", "SOUMCO");
                 return false;
             }
-            return true;
+            foreach (DataGridViewRow item in dgInward.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells["dgcSelect"].Value))
+                {
+                    isCheckedSelected = true;
+                }
+            }
+            if(!isCheckedSelected)
+            {
+                MessageBox.Show("Select atleast one product from list", "SOUMCO");
+                return false;
+            }
+
+                    return true;
         }
 
         private async void cmbProductType_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            string ProductCategory;
             if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
             {
-                await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+                txtWidth.Enabled = true;
+                txtLength.Enabled = true;
+                txtWidth.Text = "0.00";
+                txtLength.Text = "0.00";
+                lblInwardEntry.Visible = false;
+                pnlInward.Visible = false;
+                if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
+                {
+                    ProductCategory = ((ProductTypeInfo)cmbProductType.SelectedItem).productTypeName.ToUpper();
+                    if (ProductCategory.Contains("ROD") || ProductCategory.Contains("BUSH"))
+                    {
+                        txtWidth.Text = "0.00";
+                        txtWidth.Enabled = false;
+                    }
+                    else if (ProductCategory.Contains("ARTICLE"))
+                    {
+                        txtWidth.Text = "0.00";
+                        txtLength.Text = "0.00";
+                        txtWidth.Enabled = false;
+                        txtLength.Enabled = false;
+                    }
+                    else if(ProductCategory.Contains("SHEET"))
+                    {
+                        lblInwardEntry.Visible = true;
+                        pnlInward.Visible = true;
+                    }
+                }
+
+                    await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
             }
         }
 
@@ -327,6 +396,11 @@ namespace SOUMCO.Forms
                 SaveData();
              
             }
+        }
+
+        private void lblInwardEntry_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

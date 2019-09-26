@@ -653,8 +653,6 @@ namespace SOUMCO.Forms
 
                 else if (ClickName.ToUpper() == "Item".ToString().ToUpper())
                 {
-
-
                     ClsComm comm = new ClsComm();
                     dt = new DataTable();
                     if (e.ColumnIndex == 0)
@@ -684,25 +682,34 @@ namespace SOUMCO.Forms
                             dgList[8, e.RowIndex].Value = objProductInfo.productSizeName.ToString();
                         }
                     }
-                    //else if (e.ColumnIndex == 1)
-                    //{
+                    else if (e.ColumnIndex == 1)
+                    {
 
-                    //    DialogResult MsgDialog;
-                    //    int CountId =Convert.ToInt32(comm.GetValue("SELECT Count(ItemId) + (SELECT Count(ItemId) FROM OutwardDetailEntry WHERE ItemId=" + dgList.Rows[e.RowIndex].Cells[2].Value +") as ID FROM InwardDetailEntry WHERE ItemId=" + dgList.Rows[e.RowIndex].Cells[2].Value));
-                    //    if (CountId == 0)
-                    //    {
-                    //        MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    //        comm.DeleteData("Item", "ItemId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                    //        comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='OP' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                    //        dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                    //        dgList.Refresh();
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("First delete all transaction related to " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    }
+                        DialogResult MsgDialog;
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (MsgDialog == DialogResult.Yes)
+                        {
+                            var client = new HttpClient();
+                            HttpResponseMessage response = await client.DeleteAsync(Common.Common.APIURL_PRODUCT_DELETEBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString() + "&Type=Delete");
+                            ProductInfo result = await response.Content.ReadAsAsync<ProductInfo>();
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (result.productId < 0)
+                                {
+                                    MessageBox.Show("Cannot delete, check product is mapped with Inward/Outward !  " + dgList.Rows[e.RowIndex].Cells[3].Value, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Product Deleted Successfully!.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Response is not success");
+                            }
+                        }
 
-                    //}
+                    }
                 }
                 #endregion
 
@@ -1018,22 +1025,42 @@ namespace SOUMCO.Forms
                     }
                     else if (e.ColumnIndex == 1)
                     {
-                        DialogResult MsgDialog;
-                        if (dgList.Rows[e.RowIndex].Cells[3].Value.ToString() != "Admin")
+                        DialogResult MsgDialog; 
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (MsgDialog == DialogResult.Yes)
                         {
-                            MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (MsgDialog == DialogResult.Yes)
+                            var client = new HttpClient();
+                            HttpResponseMessage response = await client.DeleteAsync(Common.Common.APIURL_PRODUCTTYPE_DELETEBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString() + "&Type=Delete");
+                            ProductTypeInfo result = await response.Content.ReadAsAsync<ProductTypeInfo>();
+                            if (response.IsSuccessStatusCode)
                             {
-                                comm.DeleteData("Category", "CategoryId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                                dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                                dgList.Refresh();
+                                if (result.productTypeId<0)
+                                {
+                                    MessageBox.Show("Cannot delete, check product type is mapped with product size!  " + dgList.Rows[e.RowIndex].Cells[3].Value, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Product Type Deleted Successfully!.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("Cannot delete! " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            //DialogResult MsgDialog;
+                            //if (dgList.Rows[e.RowIndex].Cells[3].Value.ToString() != "Admin")
+                            //{
+                            //    MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            //    if (MsgDialog == DialogResult.Yes)
+                            //    {
+                            //        comm.DeleteData("Category", "CategoryId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
+                            //        dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
+                            //        dgList.Refresh();
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    MessageBox.Show("Cannot delete! " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //}
                         }
-                    }
                 }
                 #endregion
 
@@ -1079,19 +1106,27 @@ namespace SOUMCO.Forms
                     else if (e.ColumnIndex == 1)
                     {
                         DialogResult MsgDialog;
-                        if (dgList.Rows[e.RowIndex].Cells[3].Value.ToString() != "Admin")
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (MsgDialog == DialogResult.Yes)
                         {
-                            MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if (MsgDialog == DialogResult.Yes)
+                            var client = new HttpClient();
+                            HttpResponseMessage response = await client.DeleteAsync(Common.Common.APIURL_PRODUCTSIZE_DELETEBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString() + "&Type=Delete");
+                            ProductSizeInfo result = await response.Content.ReadAsAsync<ProductSizeInfo>();
+                            if (response.IsSuccessStatusCode)
                             {
-                                comm.DeleteData("SubCategory", "SubCategoryId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                                dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                                dgList.Refresh();
+                                if (result.productSizeId < 0)
+                                {
+                                    MessageBox.Show("Cannot delete, check product size is mapped with product !  " + dgList.Rows[e.RowIndex].Cells[3].Value, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Product size Deleted Successfully!.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cannot delete! " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                            {
+                                MessageBox.Show("Response is not success");
+                            }
                         }
                     }
                 }

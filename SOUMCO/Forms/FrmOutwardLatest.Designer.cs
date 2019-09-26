@@ -60,20 +60,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblInwardEntry = new System.Windows.Forms.Label();
+            this.pnlInward = new System.Windows.Forms.Panel();
+            this.dgInwardForSheet = new System.Windows.Forms.DataGridView();
+            this.dgcLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgcQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInward)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlInward.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgInwardForSheet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAdd.Location = new System.Drawing.Point(220, 198);
+            this.btnAdd.Location = new System.Drawing.Point(429, 163);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(118, 33);
+            this.btnAdd.Size = new System.Drawing.Size(114, 33);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Get Data";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -194,11 +202,12 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dgInward);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 386);
+            this.panel1.Location = new System.Drawing.Point(0, 326);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1407, 194);
+            this.panel1.Size = new System.Drawing.Size(1407, 188);
             this.panel1.TabIndex = 1018;
             // 
             // dgInward
@@ -216,7 +225,7 @@
             this.dgInward.Name = "dgInward";
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgInward.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgInward.Size = new System.Drawing.Size(1407, 194);
+            this.dgInward.Size = new System.Drawing.Size(1405, 186);
             this.dgInward.TabIndex = 12;
             // 
             // dgcSelect
@@ -227,10 +236,10 @@
             // btnSaveAndNew
             // 
             this.btnSaveAndNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndNew.Location = new System.Drawing.Point(956, 34);
+            this.btnSaveAndNew.Location = new System.Drawing.Point(1121, 7);
             this.btnSaveAndNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveAndNew.Name = "btnSaveAndNew";
-            this.btnSaveAndNew.Size = new System.Drawing.Size(126, 30);
+            this.btnSaveAndNew.Size = new System.Drawing.Size(119, 37);
             this.btnSaveAndNew.TabIndex = 1005;
             this.btnSaveAndNew.Tag = "1002";
             this.btnSaveAndNew.Text = "&Save && &New";
@@ -239,10 +248,10 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(834, 34);
+            this.btnOk.Location = new System.Drawing.Point(999, 7);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(100, 30);
+            this.btnOk.Size = new System.Drawing.Size(100, 37);
             this.btnOk.TabIndex = 1004;
             this.btnOk.Tag = "1001";
             this.btnOk.Text = "&Save";
@@ -262,10 +271,10 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(1090, 34);
+            this.btnCancel.Location = new System.Drawing.Point(1255, 7);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 29);
+            this.btnCancel.Size = new System.Drawing.Size(100, 37);
             this.btnCancel.TabIndex = 1006;
             this.btnCancel.Tag = "1003";
             this.btnCancel.Text = "Cancel";
@@ -286,21 +295,22 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BottomPanel.Controls.Add(this.btnSaveAndNew);
             this.BottomPanel.Controls.Add(this.btnOk);
             this.BottomPanel.Controls.Add(this.btnCancel);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 660);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 691);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(4);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1407, 96);
+            this.BottomPanel.Size = new System.Drawing.Size(1407, 65);
             this.BottomPanel.TabIndex = 1017;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(585, 26);
+            this.label7.Location = new System.Drawing.Point(552, 62);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 25);
@@ -310,17 +320,17 @@
             // txtRemarks
             // 
             this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.Location = new System.Drawing.Point(682, 25);
+            this.txtRemarks.Location = new System.Drawing.Point(649, 53);
             this.txtRemarks.Margin = new System.Windows.Forms.Padding(4);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(389, 93);
+            this.txtRemarks.Size = new System.Drawing.Size(484, 52);
             this.txtRemarks.TabIndex = 4;
             // 
             // txtSupplierName
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierName.Location = new System.Drawing.Point(222, 22);
+            this.txtSupplierName.Location = new System.Drawing.Point(198, 17);
             this.txtSupplierName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.Size = new System.Drawing.Size(321, 30);
@@ -329,17 +339,17 @@
             // txtBillNo
             // 
             this.txtBillNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBillNo.Location = new System.Drawing.Point(222, 60);
+            this.txtBillNo.Location = new System.Drawing.Point(649, 15);
             this.txtBillNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtBillNo.Name = "txtBillNo";
-            this.txtBillNo.Size = new System.Drawing.Size(321, 30);
+            this.txtBillNo.Size = new System.Drawing.Size(138, 30);
             this.txtBillNo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 25);
+            this.label2.Location = new System.Drawing.Point(36, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 25);
@@ -350,7 +360,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(107, 63);
+            this.label6.Location = new System.Drawing.Point(537, 20);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 25);
@@ -362,7 +372,7 @@
             this.dtpInvoiceDate.CustomFormat = "dd/MM/yyyy";
             this.dtpInvoiceDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpInvoiceDate.Location = new System.Drawing.Point(222, 99);
+            this.dtpInvoiceDate.Location = new System.Drawing.Point(198, 55);
             this.dtpInvoiceDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpInvoiceDate.Name = "dtpInvoiceDate";
             this.dtpInvoiceDate.Size = new System.Drawing.Size(138, 30);
@@ -383,7 +393,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 102);
+            this.label1.Location = new System.Drawing.Point(70, 63);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 25);
@@ -406,7 +416,7 @@
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Margin = new System.Windows.Forms.Padding(4);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(1407, 147);
+            this.TopPanel.Size = new System.Drawing.Size(1407, 116);
             this.TopPanel.TabIndex = 1016;
             // 
             // panel2
@@ -426,16 +436,74 @@
             this.panel2.Controls.Add(this.cmbProductType);
             this.panel2.Controls.Add(this.txtWidth);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 147);
+            this.panel2.Location = new System.Drawing.Point(0, 116);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1407, 239);
+            this.panel2.Size = new System.Drawing.Size(1407, 210);
             this.panel2.TabIndex = 5;
+            // 
+            // lblInwardEntry
+            // 
+            this.lblInwardEntry.AutoSize = true;
+            this.lblInwardEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblInwardEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInwardEntry.Location = new System.Drawing.Point(0, 516);
+            this.lblInwardEntry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInwardEntry.Name = "lblInwardEntry";
+            this.lblInwardEntry.Size = new System.Drawing.Size(120, 25);
+            this.lblInwardEntry.TabIndex = 1019;
+            this.lblInwardEntry.Text = "Inward Entry";
+            this.lblInwardEntry.Click += new System.EventHandler(this.lblInwardEntry_Click);
+            // 
+            // pnlInward
+            // 
+            this.pnlInward.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInward.Controls.Add(this.dgInwardForSheet);
+            this.pnlInward.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlInward.Location = new System.Drawing.Point(0, 541);
+            this.pnlInward.Name = "pnlInward";
+            this.pnlInward.Size = new System.Drawing.Size(1407, 150);
+            this.pnlInward.TabIndex = 1019;
+            // 
+            // dgInwardForSheet
+            // 
+            this.dgInwardForSheet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgInwardForSheet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgcLength,
+            this.dgcWidth,
+            this.dgcQuantity});
+            this.dgInwardForSheet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgInwardForSheet.Location = new System.Drawing.Point(0, 0);
+            this.dgInwardForSheet.Name = "dgInwardForSheet";
+            this.dgInwardForSheet.RowTemplate.Height = 24;
+            this.dgInwardForSheet.Size = new System.Drawing.Size(1405, 148);
+            this.dgInwardForSheet.TabIndex = 14;
+            // 
+            // dgcLength
+            // 
+            this.dgcLength.FillWeight = 200F;
+            this.dgcLength.HeaderText = "Length";
+            this.dgcLength.Name = "dgcLength";
+            this.dgcLength.Width = 200;
+            // 
+            // dgcWidth
+            // 
+            this.dgcWidth.FillWeight = 200F;
+            this.dgcWidth.HeaderText = "Width";
+            this.dgcWidth.Name = "dgcWidth";
+            this.dgcWidth.Width = 200;
+            // 
+            // dgcQuantity
+            // 
+            this.dgcQuantity.HeaderText = "Quantity";
+            this.dgcQuantity.Name = "dgcQuantity";
             // 
             // FrmOutwardLatest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1407, 756);
+            this.Controls.Add(this.lblInwardEntry);
+            this.Controls.Add(this.pnlInward);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.panel2);
@@ -450,7 +518,10 @@
             this.TopPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnlInward.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgInwardForSheet)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -487,5 +558,11 @@
         private System.Windows.Forms.Panel TopPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgcSelect;
+        private System.Windows.Forms.Label lblInwardEntry;
+        private System.Windows.Forms.Panel pnlInward;
+        private System.Windows.Forms.DataGridView dgInwardForSheet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcWidth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgcQuantity;
     }
 }

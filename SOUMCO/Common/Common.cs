@@ -17,21 +17,26 @@ namespace SOUMCO.Common
         public static string APIURL_PRODUCTTYPE_MODIFY = APIURL.ToString() + "ProductType/EditProductType";
         public static string APIURL_PRODUCTTYPE_GETALL = APIURL.ToString() + "ProductType/GetAllObject";
         public static string APIURL_PRODUCTTYPE_GETBY_ID = APIURL.ToString() + "ProductType/GetObjectByIdProductType";
+        public static string APIURL_PRODUCTTYPE_DELETEBY_ID = APIURL.ToString() + "ProductType/DeleteObjectByIdProductType";
 
         public static string APIURL_PRODUCTSIZE_SAVE = APIURL.ToString() + "ProductSize/SaveProductSize";
         public static string APIURL_PRODUCTSIZE_MODIFY = APIURL.ToString() + "ProductSize/EditProductSize";
         public static string APIURL_PRODUCTSIZE_GETALL = APIURL.ToString() + "ProductSize/GetAllObjectList";
         public static string APIURL_PRODUCTSIZE_GETALLBY_PRODUCTTYPE_ID = APIURL.ToString() + "ProductSize/GetAllObjectByProductTypeId";
         public static string APIURL_PRODUCTSIZE_GETBY_ID = APIURL.ToString() + "ProductSize/GetObjectByIdProductSize";
-        
+        public static string APIURL_PRODUCTSIZE_DELETEBY_ID = APIURL.ToString() + "ProductSize/DeleteObjectByIdProductSize";
+
+
 
         public static string APIURL_PRODUCT_SAVE = APIURL.ToString() + "Product/SaveProduct";
         public static string APIURL_PRODUCT_GETALL = APIURL.ToString() + "Product/GetAllObjectProduct";
         public static string APIURL_PRODUCT_GETBY_ID = APIURL.ToString() + "Product/GetObjectByIdProduct";
         public static string APIURL_PRODUCT_GETBY_PRODUCT_TYPE_AND_SIZE = APIURL.ToString() + "Product/GetObjectByProductTypeAndSize";
         public static string APIURL_PRODUCT_MODIFY = APIURL.ToString() + "Product/EditProduct";
+        public static string APIURL_PRODUCT_DELETEBY_ID = APIURL.ToString() + "Product/DeleteObjectByIdProduct";
 
-        
+
+
         public static string APIURL_INWARD_SAVE= APIURL.ToString() + "Inward/SaveInward";
         public static string APIURL_INWARD_MODIFY= APIURL.ToString() + "Inward/EditInward";
         public static string APIURL_INWARD_GETALL= APIURL.ToString() + "Inward/GetAllInward";
