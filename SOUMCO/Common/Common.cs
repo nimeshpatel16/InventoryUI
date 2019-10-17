@@ -41,14 +41,17 @@ namespace SOUMCO.Common
         public static string APIURL_INWARD_MODIFY= APIURL.ToString() + "Inward/EditInward";
         public static string APIURL_INWARD_GETALL= APIURL.ToString() + "Inward/GetAllInward";
         public static string APIURL_INWARD_GETBY_ID= APIURL.ToString() + "Inward/GetInwardById";
+        public static string APIURL_INWARD_DELETEBY_ID = APIURL.ToString() + "Inward/DeleteObjectByIdInward";
 
 
+        public static string APIURL_OUTWARD_DELETEBY_ID = APIURL.ToString() + "Outward/DeleteObjectByIdOutward";
         public static string APIURL_OUTWARD_GET_AVAILABLE_QTY= APIURL.ToString() + "Outward/GetAvailableQuantity";
         public static string APIURL_OUTWARD_SAVE = APIURL.ToString() + "Outward/SaveOutward";
         public static string APIURL_OUTWARD_MODIFY = APIURL.ToString() + "Outward/EditOutward";
         public static string APIURL_OUTWARD_GETALL = APIURL.ToString() + "Outward/GetAllOutward";
         public static string APIURL_OUTWARD_GETBY_ID = APIURL.ToString() + "Outward/GetOutwardById";
 
+        public static string APIURL_DASHBOARD_GET_AVAILABLE_QTY = APIURL.ToString() + "Outward/GetAvailableSummary";
 
         //public static async Task<bool> SaveDataAPIAsync(string url, object obj)
         //{

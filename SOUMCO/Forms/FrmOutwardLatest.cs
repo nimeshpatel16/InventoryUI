@@ -216,6 +216,16 @@ namespace SOUMCO.Forms
 
             //}
             dgInward.DataSource = ObjinwardInfo.lstOutwardDetail;
+            dgInward.Columns[0].Visible = false;
+            dgInward.Columns[1].Visible = false;
+            dgInward.Columns[2].Visible = false;
+            dgInward.Columns[3].Visible = false;
+            dgInward.Columns[5].Visible = false;
+            dgInward.Columns[7].Visible = false;
+            dgInward.Columns[10].Visible = false;
+            dgInward.Columns[13].Visible = false;
+
+
             //DataTable DTFill = new DataTable();
             //ClsComm comm = new ClsComm();
             //DTFill = comm.FillTable("Select * from InwardEntry where InwardId=" + Id);
@@ -309,30 +319,37 @@ namespace SOUMCO.Forms
 
         private bool IsValidate()
         {
+            int iQuantityToUsed=0;
             bool isCheckedSelected = false;
 
             if (txtBillNo.Text == "")
             {
-                MessageBox.Show("Enter Invoice No ", "SOUMCO");
+                MessageBox.Show("Enter Invoice No ", "Inventory");
                 txtBillNo.Focus();
                 return false;
             }
 
             if (dgInward.Rows.Count == 0)
             {
-                MessageBox.Show("Cannot save data without transaction", "SOUMCO");
+                MessageBox.Show("Cannot save data without transaction", "Inventory");
                 return false;
             }
             foreach (DataGridViewRow item in dgInward.Rows)
             {
                 if (Convert.ToBoolean(item.Cells["dgcSelect"].Value))
                 {
+                    iQuantityToUsed = Convert.ToInt32(item.Cells[8].Value.ToString()) + iQuantityToUsed;
                     isCheckedSelected = true;
                 }
             }
+            if(iQuantityToUsed>0 && iQuantityToUsed!=Convert.ToInt32(txtQuantity.Text))
+            {
+                MessageBox.Show("Used quantity and enter quantity should be same", "Inventory");
+                return false;
+            }
             if(!isCheckedSelected)
             {
-                MessageBox.Show("Select atleast one product from list", "SOUMCO");
+                MessageBox.Show("Select atleast one product from list", "Inventory");
                 return false;
             }
 
@@ -386,7 +403,14 @@ namespace SOUMCO.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            GetAvailableQty();
+            if (!string.IsNullOrEmpty(txtQuantity.Text))
+            {
+                GetAvailableQty();
+            }
+            else
+            {
+                MessageBox.Show("Enter Quantity");
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -400,6 +424,68 @@ namespace SOUMCO.Forms
 
         private void lblInwardEntry_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private async void cmbProductSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(cmbProductSize.SelectedValue) > 0)
+                {
+                    await GetProductBaseOnProductTypeAndSize(Convert.ToInt32(cmbProductType.SelectedValue), Convert.ToInt32(cmbProductSize.SelectedValue));
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
+
+        private async void cmbProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string ProductCategory;
+                if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
+                {
+                    txtWidth.Enabled = true;
+                    txtLength.Enabled = true;
+                    txtWidth.Text = "0.00";
+                    txtLength.Text = "0.00";
+                    lblInwardEntry.Visible = false;
+                    pnlInward.Visible = false;
+                    if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
+                    {
+                        ProductCategory = ((ProductTypeInfo)cmbProductType.SelectedItem).productTypeName.ToUpper();
+                        if (ProductCategory.Contains("ROD") || ProductCategory.Contains("BUSH"))
+                        {
+                            txtWidth.Text = "0.00";
+                            txtWidth.Enabled = false;
+                        }
+                        else if (ProductCategory.Contains("ARTICLE"))
+                        {
+                            txtWidth.Text = "0.00";
+                            txtLength.Text = "0.00";
+                            txtWidth.Enabled = false;
+                            txtLength.Enabled = false;
+                        }
+                        else if (ProductCategory.Contains("SHEET"))
+                        {
+                            lblInwardEntry.Visible = true;
+                            pnlInward.Visible = true;
+                        }
+                    }
+
+                    await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
 
         }
     }

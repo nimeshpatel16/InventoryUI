@@ -60,26 +60,32 @@
             this.GBCustomerInformation.Margin = new System.Windows.Forms.Padding(4);
             this.GBCustomerInformation.Name = "GBCustomerInformation";
             this.GBCustomerInformation.Padding = new System.Windows.Forms.Padding(4);
-            this.GBCustomerInformation.Size = new System.Drawing.Size(493, 172);
+            this.GBCustomerInformation.Size = new System.Drawing.Size(554, 197);
             this.GBCustomerInformation.TabIndex = 1;
             this.GBCustomerInformation.TabStop = false;
             // 
             // cmbProductSize
             // 
+            this.cmbProductSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductSize.FormattingEnabled = true;
-            this.cmbProductSize.Location = new System.Drawing.Point(149, 52);
+            this.cmbProductSize.Location = new System.Drawing.Point(149, 57);
             this.cmbProductSize.Name = "cmbProductSize";
-            this.cmbProductSize.Size = new System.Drawing.Size(324, 26);
+            this.cmbProductSize.Size = new System.Drawing.Size(369, 30);
             this.cmbProductSize.TabIndex = 4;
             // 
             // cmbProductType
             // 
-            this.cmbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProductType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProductType.FormattingEnabled = true;
             this.cmbProductType.Location = new System.Drawing.Point(149, 22);
             this.cmbProductType.Name = "cmbProductType";
-            this.cmbProductType.Size = new System.Drawing.Size(324, 26);
+            this.cmbProductType.Size = new System.Drawing.Size(369, 30);
             this.cmbProductType.TabIndex = 3;
+            this.cmbProductType.SelectedIndexChanged += new System.EventHandler(this.cmbProductType_SelectedIndexChanged);
             this.cmbProductType.SelectionChangeCommitted += new System.EventHandler(this.cmbProductType_SelectionChangeCommitted);
             // 
             // label16
@@ -115,11 +121,11 @@
             // txtRemarks
             // 
             this.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRemarks.Location = new System.Drawing.Point(149, 119);
+            this.txtRemarks.Location = new System.Drawing.Point(149, 125);
             this.txtRemarks.Margin = new System.Windows.Forms.Padding(4);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(324, 29);
+            this.txtRemarks.Size = new System.Drawing.Size(369, 30);
             this.txtRemarks.TabIndex = 6;
             // 
             // label3
@@ -135,11 +141,11 @@
             // txtName
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(149, 87);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(149, 92);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(324, 24);
+            this.txtName.Size = new System.Drawing.Size(369, 28);
             this.txtName.TabIndex = 5;
             // 
             // label2
@@ -154,7 +160,7 @@
             // 
             // btnSaveAndNew
             // 
-            this.btnSaveAndNew.Location = new System.Drawing.Point(264, 218);
+            this.btnSaveAndNew.Location = new System.Drawing.Point(289, 218);
             this.btnSaveAndNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveAndNew.Name = "btnSaveAndNew";
             this.btnSaveAndNew.Size = new System.Drawing.Size(115, 28);
@@ -164,7 +170,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(156, 218);
+            this.btnOk.Location = new System.Drawing.Point(181, 218);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(100, 28);
@@ -175,7 +181,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(386, 218);
+            this.btnCancel.Location = new System.Drawing.Point(411, 218);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
@@ -187,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 269);
+            this.ClientSize = new System.Drawing.Size(580, 269);
             this.Controls.Add(this.btnSaveAndNew);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);

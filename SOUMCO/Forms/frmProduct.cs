@@ -55,11 +55,11 @@ namespace SOUMCO.Forms
 
         #endregion
 
-        private void cmbProductType_SelectionChangeCommitted(object sender, EventArgs e)
+        private async void cmbProductType_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
             {
-                GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+               await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
             }
         }
 
@@ -209,5 +209,20 @@ namespace SOUMCO.Forms
             ProcClear();
         }
 
+        private async void cmbProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
+                {
+                    await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
     }
 }

@@ -279,8 +279,6 @@ namespace SOUMCO.Forms
             //    MessageBox.Show("No Record Found");
             //}
 
-        
-
         private async System.Threading.Tasks.Task InwardEntry()
         {
             List<InwardInfo> inwardInfo = new List<InwardInfo>();
@@ -686,7 +684,7 @@ namespace SOUMCO.Forms
                     {
 
                         DialogResult MsgDialog;
-                        MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[3].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete " + dgList.Rows[e.RowIndex].Cells[5].Value, "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (MsgDialog == DialogResult.Yes)
                         {
                             var client = new HttpClient();
@@ -696,7 +694,7 @@ namespace SOUMCO.Forms
                             {
                                 if (result.productId < 0)
                                 {
-                                    MessageBox.Show("Cannot delete, check product is mapped with Inward/Outward !  " + dgList.Rows[e.RowIndex].Cells[3].Value, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Cannot delete, check product is mapped with Inward/Outward !  " + dgList.Rows[e.RowIndex].Cells[5].Value, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
                                 {
@@ -789,46 +787,48 @@ namespace SOUMCO.Forms
                         }
 
                         dgList.Refresh();
+                    }
+                    else if (e.ColumnIndex == 1)
+                    {
+                        DialogResult MsgDialog;
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete Inward Entry", "Inventory", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (MsgDialog == DialogResult.Yes)
+                        {
+                            var client = new HttpClient();
+                            HttpResponseMessage response = await client.DeleteAsync(Common.Common.APIURL_INWARD_DELETEBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString() + "&Type=Delete");
+                            InwardInfo result = await response.Content.ReadAsAsync<InwardInfo>();
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (result.inwardId < 0)
+                                {
+                                    MessageBox.Show("Cannot delete, as this inward is used in the outward", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Inward Entry Deleted Successfully!.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Response is not success");
+                            }
+                        }
 
 
-                        //ClsComm comm = new ClsComm();
-                        //dt = new DataTable();
-                        //if (e.ColumnIndex == 0)
+
+                        ////DialogResult MsgDialog;
+
+                        //MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        //if (MsgDialog == DialogResult.Yes)
                         //{
-                        //    FrmNewInward frminward = new FrmNewInward();
-                        //    MDIMain mdi = new MDIMain();
-                        //    frminward.ProcFillForm(dgList.Rows[e.RowIndex].Cells[2].Value);
-                        //    frminward.MdiParent = this.MdiParent;
-                        //    frminward.BringToFront();
-                        //    frminward.WindowState = FormWindowState.Maximized;
-                        //    frminward.Dock = DockStyle.Fill;
-                        //    frminward.Show();
-                        //    //frminward.ShowDialog(mdi);
-                        //    dt = comm.FillTable("Select I.InwardId,S.SupplierName,I.BillNo,format(I.EntryDate,\"dd/mm/yyyy\") as ChallanDate from InwardEntry I,Supplier S where S.SupplierId=I.SupplierId and I.InwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                        //    if (dt.Rows.Count > 0)
-                        //    {
-                        //        dgList[3, e.RowIndex].Value = dt.Rows[0]["SupplierName"].ToString();
-                        //        dgList[4, e.RowIndex].Value = dt.Rows[0]["BillNo"].ToString();
-                        //        dgList[5, e.RowIndex].Value = dt.Rows[0]["ChallanDate"].ToString();
-
-                        //    }
-
-                        //}
-                        //else if (e.ColumnIndex == 1)
-                        //{
-                        //    DialogResult MsgDialog;
-
-                        //    MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        //    if (MsgDialog == DialogResult.Yes)
-                        //    {
-                        //        comm.DeleteData("InwardEntry", "InwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                        //        comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='I' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                        //        dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                        //        dgList.Refresh();
-                        //    }
+                        //    comm.DeleteData("InwardEntry", "InwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
+                        //    comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='I' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
+                        //    dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
+                        //    dgList.Refresh();
                         //}
                     }
                 }
+                
                 #endregion
 
                 #region Outward Entry
@@ -864,55 +864,37 @@ namespace SOUMCO.Forms
                         }
 
                         dgList.Refresh();
-
-
-
-
-                        //ClsComm comm = new ClsComm();
-                        //dt = new DataTable();
-                        //if (e.ColumnIndex == 0)
-                        //{
-                        //    FrmOutwardLatest frmOutward = new FrmOutwardLatest();
-                        //  //  frmOutward.ProcFillForm(dgList.Rows[e.RowIndex].Cells[2].Value);
-                        //    //frmOutward.ShowDialog();
-                        //    frmOutward.MdiParent = this.MdiParent;
-                        //    frmOutward.BringToFront();
-                        //    frmOutward.WindowState = FormWindowState.Maximized;
-                        //    frmOutward.Dock = DockStyle.Fill;
-                        //    frmOutward.Show();
-
-
-                        //    dt = comm.FillTable("SELECT OutwardEntry.OutwardId, Supplier.SupplierName as CustomerName, OutwardEntry.InvoiceNo, format(OutwardEntry.InvoiceDate,\"dd/mm/yyyy\") as InvoiceDate " +
-                        //                " FROM OutwardEntry INNER JOIN Supplier ON OutwardEntry.CustomerId = Supplier.SupplierId " +
-                        //                " WHERE (((Supplier.Type)='Customer')) AND OutwardEntry.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + "" +
-                        //                " ORDER BY OutwardEntry.InvoiceDate Desc;");
-
-                        //    //dt = comm.FillTable("Select O.OutwardId,V.VehicleNo,O.DocNo,format(O.DocDate,\"dd/mm/yyyy\") as DocDate,O.InchargeName,O.IssueTo from OutwardEntry O inner join Vehicle V on V.VehicleId=O.VehicleId where O.OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value);
-                        //    if (dt.Rows.Count > 0)
-                        //    {
-                        //        dgList[3, e.RowIndex].Value = dt.Rows[0]["CustomerName"].ToString();
-                        //        dgList[4, e.RowIndex].Value = dt.Rows[0]["InvoiceNo"].ToString();
-                        //        dgList[5, e.RowIndex].Value = dt.Rows[0]["InvoiceDate"].ToString();
-                        //        //dgList[6, e.RowIndex].Value = dt.Rows[0]["CategoryName"].ToString();
-                        //        //dgList[7, e.RowIndex].Value = dt.Rows[0]["ItemName"].ToString();
-                        //    }
-
-
-                        //}
-                        //else if (e.ColumnIndex == 1)
-                        //{
-                        //    DialogResult MsgDialog;
-
-                        //    MsgDialog = MessageBox.Show("Are You sure you want to delete?", "SOUMCO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        //    if (MsgDialog == DialogResult.Yes)
-                        //    {
-                        //        comm.DeleteData("OutwardEntry", "OutwardId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                        //        comm.DeleteData("tbLedger", "TxnId=" + dgList.Rows[e.RowIndex].Cells[2].Value + " and TxnType='O' and CompanyId=" + ClsComm.CompanyId + " and YearId=" + ClsComm.YearId);
-                        //        dgList.Rows.Remove(dgList.Rows[e.RowIndex]);
-                        //        dgList.Refresh();
-                        //    }
-                        }
                     }
+                    else if (e.ColumnIndex == 1)
+                    {
+                        DialogResult MsgDialog;
+                        MsgDialog = MessageBox.Show("Are you sure you want to delete Outward Entry", "Inventory", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (MsgDialog == DialogResult.Yes)
+                        {
+                            var client = new HttpClient();
+                            HttpResponseMessage response = await client.DeleteAsync(Common.Common.APIURL_OUTWARD_DELETEBY_ID + "?Id=" + dgList.Rows[e.RowIndex].Cells[2].Value.ToString() + "&Type=Delete");
+                            OutwardInfo result = await response.Content.ReadAsAsync<OutwardInfo>();
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (result.outwardId < 0)
+                                {
+                                   MessageBox.Show("Cannot delete, as this Outward as is used in another transaction ", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Outward Entry Deleted Successfully!.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Response is not success");
+                            }
+                        }
+                        
+                    }
+
+                }
+                    
                     #endregion
 
                     #region user Info

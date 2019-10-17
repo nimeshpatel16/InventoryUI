@@ -28,7 +28,7 @@ namespace SOUMCO.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@ namespace SOUMCO.Forms
             // txtRemarks
             // 
             this.txtRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.Location = new System.Drawing.Point(682, 25);
+            this.txtRemarks.Location = new System.Drawing.Point(682, 22);
             this.txtRemarks.Margin = new System.Windows.Forms.Padding(4);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
@@ -211,7 +211,7 @@ namespace SOUMCO.Forms
             this.btnSaveAndNew.Location = new System.Drawing.Point(956, 34);
             this.btnSaveAndNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveAndNew.Name = "btnSaveAndNew";
-            this.btnSaveAndNew.Size = new System.Drawing.Size(126, 28);
+            this.btnSaveAndNew.Size = new System.Drawing.Size(126, 31);
             this.btnSaveAndNew.TabIndex = 1005;
             this.btnSaveAndNew.Tag = "1002";
             this.btnSaveAndNew.Text = "&Save && &New";
@@ -224,7 +224,7 @@ namespace SOUMCO.Forms
             this.btnOk.Location = new System.Drawing.Point(834, 34);
             this.btnOk.Margin = new System.Windows.Forms.Padding(4);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(100, 28);
+            this.btnOk.Size = new System.Drawing.Size(100, 30);
             this.btnOk.TabIndex = 1004;
             this.btnOk.Tag = "1001";
             this.btnOk.Text = "&Save";
@@ -237,7 +237,7 @@ namespace SOUMCO.Forms
             this.btnCancel.Location = new System.Drawing.Point(1090, 34);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 28);
+            this.btnCancel.Size = new System.Drawing.Size(100, 30);
             this.btnCancel.TabIndex = 1006;
             this.btnCancel.Tag = "1003";
             this.btnCancel.Text = "Cancel";
@@ -255,8 +255,8 @@ namespace SOUMCO.Forms
             this.dgInward.Location = new System.Drawing.Point(0, 0);
             this.dgInward.Margin = new System.Windows.Forms.Padding(4);
             this.dgInward.Name = "dgInward";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgInward.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgInward.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgInward.Size = new System.Drawing.Size(1283, 194);
             this.dgInward.TabIndex = 12;
             this.dgInward.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgInward_CellClick);
@@ -267,7 +267,7 @@ namespace SOUMCO.Forms
             // 
             this.txtLength.BackColor = System.Drawing.SystemColors.Window;
             this.txtLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtLength.Location = new System.Drawing.Point(418, 121);
+            this.txtLength.Location = new System.Drawing.Point(498, 117);
             this.txtLength.Margin = new System.Windows.Forms.Padding(4);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(112, 30);
@@ -344,7 +344,7 @@ namespace SOUMCO.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(341, 124);
+            this.label10.Location = new System.Drawing.Point(421, 120);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 25);
@@ -376,7 +376,7 @@ namespace SOUMCO.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(138, 124);
+            this.label8.Location = new System.Drawing.Point(138, 122);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 25);
@@ -425,7 +425,7 @@ namespace SOUMCO.Forms
             this.cmbProduct.Location = new System.Drawing.Point(209, 81);
             this.cmbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProduct.Name = "cmbProduct";
-            this.cmbProduct.Size = new System.Drawing.Size(323, 30);
+            this.cmbProduct.Size = new System.Drawing.Size(401, 30);
             this.cmbProduct.TabIndex = 8;
             this.cmbProduct.Tag = "1";
             // 
@@ -438,7 +438,7 @@ namespace SOUMCO.Forms
             this.cmbProductSize.Location = new System.Drawing.Point(209, 44);
             this.cmbProductSize.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductSize.Name = "cmbProductSize";
-            this.cmbProductSize.Size = new System.Drawing.Size(323, 30);
+            this.cmbProductSize.Size = new System.Drawing.Size(401, 30);
             this.cmbProductSize.TabIndex = 7;
             this.cmbProductSize.Tag = "1";
             this.cmbProductSize.SelectedIndexChanged += new System.EventHandler(this.cmbProductSize_SelectedIndexChanged);
@@ -452,16 +452,17 @@ namespace SOUMCO.Forms
             this.cmbProductType.Location = new System.Drawing.Point(209, 8);
             this.cmbProductType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProductType.Name = "cmbProductType";
-            this.cmbProductType.Size = new System.Drawing.Size(323, 30);
+            this.cmbProductType.Size = new System.Drawing.Size(401, 30);
             this.cmbProductType.TabIndex = 6;
             this.cmbProductType.Tag = "1";
+            this.cmbProductType.SelectedIndexChanged += new System.EventHandler(this.cmbProductType_SelectedIndexChanged);
             this.cmbProductType.SelectionChangeCommitted += new System.EventHandler(this.cmbProductType_SelectionChangeCommitted);
             // 
             // txtWidth
             // 
             this.txtWidth.BackColor = System.Drawing.SystemColors.Window;
             this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtWidth.Location = new System.Drawing.Point(209, 121);
+            this.txtWidth.Location = new System.Drawing.Point(209, 119);
             this.txtWidth.Margin = new System.Windows.Forms.Padding(4);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(118, 30);

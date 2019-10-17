@@ -54,6 +54,21 @@ namespace SOUMCO.Class
         public string type { get; set; }
     }
 
+    public class GetAvailableSummaryRequest
+    { 
+        public int productTypeId { get; set; }
+        public int productSizeId { get; set; }
+    }
+
+    public class GetAvailableSummaryResponse
+    {
+        public int productId { get; set; }
+        public string productName { get; set; }
+        public decimal length { get; set; }
+        public decimal width { get; set; }
+        public int quantity { get; set; }
+    }
+
     public class OutwardResultAvailableQuantity
     {
         public int ledgerId { get; set; }

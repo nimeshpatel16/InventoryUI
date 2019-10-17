@@ -340,6 +340,7 @@ namespace SOUMCO.Forms
               
             }
             dgInward.DataSource = productDataTable;
+            
             //DataTable DTFill = new DataTable();
             //ClsComm comm = new ClsComm();
             //DTFill = comm.FillTable("Select * from InwardEntry where InwardId=" + Id);
@@ -647,9 +648,20 @@ namespace SOUMCO.Forms
             }
         }
 
-        private void cmbProductSize_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbProductSize_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (Convert.ToInt32(cmbProductType.SelectedValue) > 0 && cmbProductSize.SelectedValue!=null)
+                {
+                    await GetProductBaseOnProductTypeAndSize(Convert.ToInt32(cmbProductType.SelectedValue), Convert.ToInt32(cmbProductSize.SelectedValue));
+                }
+            }
+            catch (Exception)
+            {
 
+                
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -711,6 +723,7 @@ namespace SOUMCO.Forms
             dgInward.Columns["ProductTypeId"].Visible = false;
             dgInward.Columns["ProductSizeId"].Visible = false;
             dgInward.Columns["ProductId"].Visible = false;
+            dgInward.Columns["InwardDetailId"].Visible = false;
             foreach (DataGridViewRow r in dgInward.Rows)
             {
 
@@ -733,15 +746,15 @@ namespace SOUMCO.Forms
                 if (this.dgInward[e.ColumnIndex, e.RowIndex].Value.ToString() == "Edit")
                 {
                     cmbProductType.SelectedValue = Convert.ToInt32(dgInward[0, e.RowIndex].Value);
-                    cmbProductType_SelectionChangeCommitted(null, null);
+                   // cmbProductType_SelectionChangeCommitted(null, null);
                     cmbProductSize.SelectedIndex = -1;
                     cmbProductSize.SelectedValue = Convert.ToInt32(dgInward[2, e.RowIndex].Value);
-                    cmbProductSize_SelectionChangeCommitted(null, null);
+                   // cmbProductSize_SelectionChangeCommitted(null, null);
 
                     cmbProduct.SelectedValue = Convert.ToInt32(dgInward[4, e.RowIndex].Value);
                     if (cmbProduct.SelectedValue == null)
                     {
-                        cmbProductSize_SelectionChangeCommitted(null, null);
+                       // cmbProductSize_SelectionChangeCommitted(null, null);
                         cmbProduct.SelectedValue = Convert.ToInt32(dgInward[4, e.RowIndex].Value);
                     }
                     txtWidth.Text = dgInward[6, e.RowIndex].Value.ToString();
@@ -765,6 +778,39 @@ namespace SOUMCO.Forms
             //inwardDetail.InwardHeight = 0;
 
             //MessageBox.Show(this.dgInward[e.ColumnIndex, e.RowIndex].Value.ToString());
+        }
+
+        private async void cmbProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtWidth.Enabled = true;
+                txtLength.Enabled = true;
+                txtWidth.Text = "0.00";
+                txtLength.Text = "0.00";
+                if (Convert.ToInt32(cmbProductType.SelectedValue) > 0)
+                {
+                    ProductCategory = ((ProductTypeInfo)cmbProductType.SelectedItem).productTypeName.ToUpper();
+                    if (ProductCategory.Contains("ROD") || ProductCategory.Contains("BUSH"))
+                    {
+                        txtWidth.Text = "0.00";
+                        txtWidth.Enabled = false;
+                    }
+                    else if (ProductCategory.Contains("ARTICLE"))
+                    {
+                        txtWidth.Text = "0.00";
+                        txtLength.Text = "0.00";
+                        txtWidth.Enabled = false;
+                        txtLength.Enabled = false;
+                    }
+                    await GetProductSizeBaseOnProductType(Convert.ToInt32(cmbProductType.SelectedValue));
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
         }
     }
 }
